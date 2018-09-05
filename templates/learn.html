@@ -29,7 +29,7 @@
 
     <h1 class="site-heading text-center text-white d-none d-lg-block">
       <span class="site-heading-upper text-primary mb-3">Learn more about your dog</span>
-      <span class="site-heading-lower">The more you know, the better friends your dog will be</span>
+      <span class="site-heading-lower">The more you know, the better friends you have</span>
     </h1>
 
     <!-- Navigation -->
@@ -59,6 +59,37 @@
         </div>
       </div>
     </nav>
+
+    <section class="page-section" style="background-color: rgba(230, 167, 86, 0.9); padding: 3rem 0;">
+      <div class="container">
+        <div class="row">
+          <div class="col-xl-9 mx-auto">
+            <div class="cta-inner text-center rounded">
+              <h2 class="section-heading mb-5">
+                <span class="section-heading-upper">Share how much time and money you spend for your dog (optional)</span>
+                <span class="section-heading-lower">Select your breed and search</span>
+              </h2>
+
+                <form method="POST" action="/send" role="form">
+                    <div class="form-group">
+                      <label for="selBreed">Select your breed</label>
+                      <select id="selDataset" onchange="optionChanged(this.value)"></select>
+                    </div>
+                    <div class="form-group">
+                      <label for="inputTime">How many hours do you spend with your dogs? (optional)</label>
+                      <input type="number" class="form-control" id="time" placeholder="Answer with a number of hours">
+                    </div>
+                    <div class="form-group">
+                      <label for="inputTime">How much do you spend for your dogs per month? (optional)</label>
+                      <input type="number" class="form-control" id="money" placeholder="Answer with a dollar value">
+                    </div>
+                  </form>
+
+            </div>
+          </div>
+        </div>
+      </div>  
+    </section>
 
     <section class="page-section">
       <div class="container">
@@ -130,9 +161,15 @@
       </div>
     </footer>
 
+    <!-- d3 import -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+
     <!-- Bootstrap core JavaScript -->
     <script src="../static/vendor/jquery/jquery.min.js"></script>
     <script src="../static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+    <!-- learn_logic.js -->
+    <script src="{{ url_for('static', filename='js/learn_logic.js') }}"></script> <!-- run only with Flask -->
 
   </body>
 
