@@ -13,15 +13,13 @@ app = Flask(__name__)
 # 1. Database setup
 
 ### Option 1. Use flask_pymongo to set up mongo connection and access a database
-app.config["MONGO_URI"] = f"mongodb://{dbuser}:{dbpassword}@ds018558.mlab.com:18558/dogpedia"
-mongo = PyMongo(app)
+# app.config["MONGO_URI"] = f"mongodb://{dbuser}:{dbpassword}@ds018558.mlab.com:18558/dogpedia"
+# mongo = PyMongo(app)
 
 ### Option 2. Use pymongo and connect to database
-# conn = f"mongodb://{dbuser}:{dbpassword}@ds018558.mlab.com:18558/dogpedia"
-# client = pymongo.MongoClient(conn)
-# db = client.dogpedia
-# collection_breeds = db.breeds
-# collection_pet_stores = db.pet_stores
+conn = f"mongodb://{dbuser}:{dbpassword}@ds018558.mlab.com:18558/dogpedia"
+client = pymongo.MongoClient(conn)
+db = client.dogpedia
 
 
 # 2. Setting up the basic template route
@@ -51,24 +49,25 @@ def adopt():
 
 @app.route("/breeds")
 def breeds():
-    breeds = mongo.db.breeds.find_one()['breed']
-    # breeds = collection_breeds.find_one()
+    # breeds = mongo.db.breeds.find_one()['breed']
+    breeds = db.breeds.find_one()['breed']
     return jsonify(breeds)
 
 
 @app.route("/states")
 def states():
-    states = mongo.db.pet_stores.find_one()["geo"]
-    # states = collection_pet_stores.find_one()
+    # states = mongo.db.pet_stores.find_one()["geo"]
+    states = db.pet_stores.find_one()["geo"]
     return jsonify(states)
+
 
 @app.route("/breed_traits/<breed>")
 def breedTraits(breed):
     """Return the traits for a given breed"""
     name = breed
-    apt = mongo.db.breed_trait.find_one({'breed':breed})['apt_friendly']
-    energy = mongo.db.breed_trait.find_one({'breed':breed})['energy']
-    shedding = mongo.db.breed_trait.find_one({'breed':breed})['shedding']
+    apt = db.breed_trait.find_one({'breed':breed})['apt_friendly']
+    energy = db.breed_trait.find_one({'breed':breed})['energy']
+    shedding = db.breed_trait.find_one({'breed':breed})['shedding']
     
     # Create a dictionary entry for each row of metadata information
     breed_traits = {}
@@ -78,6 +77,28 @@ def breedTraits(breed):
     breed_traits["apt_friendly"] = apt
 
     return jsonify(breed_traits)
+
+
+@app.route("/time_money/<breed>")
+def inputValues(breed):
+    """Return a list of time and money spent on the breed"""
+    datas = list(db.time_money.find({'breed': breed}))
+    
+    time = []
+    money = []
+    
+    for data in datas:
+        time.append(data['time'])
+        money.append(data['money'])
+    
+    value = {
+        "breed": breed,
+        "time": time,
+        "money": money
+    }
+
+    return jsonify(value)
+
 
 
 if __name__ == "__main__":

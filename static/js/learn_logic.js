@@ -1,4 +1,4 @@
-function startBar(breed) {
+function buildBar(breed) {
   d3.json(`/breed_traits/${breed}`).then((trait) => {
     
     console.log(trait)
@@ -14,6 +14,67 @@ function startBar(breed) {
     Plotly.newPlot('buildBar', data);
 
   });
+}
+
+
+function buildPlot(breed) {
+  /* data route */
+d3.json(`/time_money/${breed}`).then(function(response) {
+
+  console.log(response);
+
+  var time_samples = {
+    y: response.time,
+    boxpoints: 'all',
+    jitter: 0.3,
+    pointpos: -1.8,
+    type: 'box',
+    marker: {
+      color: 'rgb(214,12,140)'
+    }
+  };
+
+  var spending_samples = {
+    y: response.money,
+    boxpoints: 'all',
+    jitter: 0.3,
+    pointpos: -1.8,
+    type: 'box',
+    marker: {
+      color: "rgb(0,128,128)"
+    }
+  };
+
+  var time_data = [time_samples];
+  var spending_data = [spending_samples];
+
+  var str1 = "People who have ";
+  var str2 = " spend x hrs with their dog(s) per day";
+  var str3 = " spend $x on their dog(s) per month"
+
+  var time_layout = {
+    title: str1.concat(response.breed,str2),
+    xaxis: {
+      title: response.breed
+    },
+    yaxis: {
+      title: "Daily spending Hours the user responded"
+    }
+  };
+
+  var money_layout = {
+    title: str1.concat(response.breed,str3),
+    xaxis: {
+      title: response.breed
+    },
+    yaxis: {
+      title: "Monthly spending the user responded"
+    }
+  };
+
+  Plotly.newPlot("buildPlotTime", time_data, time_layout);
+  Plotly.newPlot("buildPlotMoney", spending_data, money_layout);
+});
 }
 
 
@@ -33,15 +94,16 @@ function init() {
 
     // Use the first breed from the list to build the initial plots
     const firstSample = breeds[0];
-    startBar(firstSample);
+    buildBar(firstSample);
+    buildPlot(firstSample);
   });
 }
 
 
 function optionChanged(newSample) {
   // Fetch new data each time a new sample is selected
-  startBar(newSample);
+  buildBar(newSample);
 }
-  
+
 
 init();

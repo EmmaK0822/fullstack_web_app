@@ -76,13 +76,14 @@
                       <select id="selDataset" onchange="optionChanged(this.value)"></select>
                     </div>
                     <div class="form-group">
-                      <label for="inputTime">How many hours do you spend with your dogs? (optional)</label>
-                      <input type="number" class="form-control" id="time" placeholder="Answer with a number of hours">
+                      <label for="inputTime">How many hours do you spend with your dogs per day? (optional)</label>
+                      <input type="number" class="form-control" id="inputTime" placeholder="Answer with a number of hours">
                     </div>
                     <div class="form-group">
-                      <label for="inputTime">How much do you spend for your dogs per month? (optional)</label>
-                      <input type="number" class="form-control" id="money" placeholder="Answer with a dollar value">
+                      <label for="inputTime">How much do you spend on your dogs per month? (optional)</label>
+                      <input type="number" class="form-control" id="inputMoney" placeholder="Answer with a dollar value">
                     </div>
+                    <input type="submit" value="submit" class="btn btn-primary btn-xl">
                   </form>
 
             </div>
@@ -98,13 +99,13 @@
           <div class="product-item-title d-flex">
             <div class="bg-faded p-5 d-flex ml-auto rounded">
               <h2 class="section-heading mb-0">
-                <span class="section-heading-upper">Gauge Charts in plotly.js</span>
-                <span class="section-heading-lower">Average time &amp; money</span>
+                <span class="section-heading-upper">Box Plots in plotly.js</span>
+                <span class="section-heading-lower">Average time</span>
               </h2>
             </div>
           </div>
           <div class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0">
-              <div id="gauge"></div>
+            <div id="buildPlotTime"></div>
           </div>
           <div class="product-item-description d-flex mr-auto">
             <div class="bg-faded p-5 rounded">
@@ -121,8 +122,8 @@
           <div class="product-item-title d-flex">
             <div class="bg-faded p-5 d-flex mr-auto rounded">
               <h2 class="section-heading mb-0">
-                <span class="section-heading-upper">Dot Plots in plotly.js</span>
-                <span class="section-heading-lower">Breeds &amp; Traits</span>
+                <span class="section-heading-upper">Bar Chart in plotly.js</span>
+                <span class="section-heading-lower">Breeds Traits</span>
               </h2>
             </div>
           </div>
@@ -144,12 +145,14 @@
           <div class="product-item-title d-flex">
             <div class="bg-faded p-5 d-flex ml-auto rounded">
               <h2 class="section-heading mb-0">
-                <span class="section-heading-upper">Movable Tables in plotly.js</span>
-                <span class="section-heading-lower">Comparison for recommended dog breeds</span>
+                <span class="section-heading-upper">Box Plots in plotly.js</span>
+                <span class="section-heading-lower">Average money</span>
               </h2>
             </div>
           </div>
-          <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="../static/img/products-03.png" alt="">
+          <div class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0">
+            <div id="buildPlotMoney"></div>
+          </div>
           <div class="product-item-description d-flex mr-auto">
             <div class="bg-faded p-5 rounded">
               <p class="mb-0">Travelling the world for the very best quality coffee is something take pride in. When you visit us, you'll always find new blends from around the world, mainly from regions in Central and South America. We sell our blends in smaller to large bulk quantities. Please visit us in person for more details.</p>
