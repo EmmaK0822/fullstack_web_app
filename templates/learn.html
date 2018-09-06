@@ -42,18 +42,18 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav mx-auto">
             <li class="nav-item px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="index.html">Home
+              <a class="nav-link text-uppercase text-expanded" href="/">Home
                 <span class="sr-only">(current)</span>
               </a>
             </li>
             <li class="nav-item px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="find.html">Find</a>
+              <a class="nav-link text-uppercase text-expanded" href="/find">Find</a>
             </li>
             <li class="nav-item active px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="learn.html">Learn</a>
+              <a class="nav-link text-uppercase text-expanded" href="/learn">Learn</a>
             </li>
             <li class="nav-item px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="adopt.html">Adopt</a>
+              <a class="nav-link text-uppercase text-expanded" href="/adopt">Adopt</a>
             </li>
           </ul>
         </div>
@@ -91,6 +91,7 @@
       </div>  
     </section>
 
+    
     <section class="page-section">
       <div class="container">
         <div class="product-item">
@@ -102,8 +103,9 @@
               </h2>
             </div>
           </div>
-          <div id="gauge" class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0"></div>
-          <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="../static/img/products-01.png" alt="">
+          <div class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0">
+              <div id="gauge"></div>
+          </div>
           <div class="product-item-description d-flex mr-auto">
             <div class="bg-faded p-5 rounded">
               <p class="mb-0">We take pride in our work, and it shows. Every time you order a beverage from us, we guarantee that it will be an experience worth having. Whether it's our world famous Venezuelan Cappuccino, a refreshing iced herbal tea, or something as simple as a cup of speciality sourced black coffee, you will be coming back for more.</p>
@@ -124,7 +126,9 @@
               </h2>
             </div>
           </div>
-          <img class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0" src="../static/img/products-02.png" alt="">
+          <div class="product-item-img mx-auto d-flex rounded img-fluid mb-3 mb-lg-0">
+              <div id="buildBar"></div>
+          </div>
           <div class="product-item-description d-flex ml-auto">
             <div class="bg-faded p-5 rounded">
               <p class="mb-0">Our seasonal menu features delicious snacks, baked goods, and even full meals perfect for breakfast or lunchtime. We source our ingredients from local, oragnic farms whenever possible, alongside premium vendors for specialty goods.</p>
@@ -160,6 +164,10 @@
         <p class="m-0 small">Copyright &copy; Dogpedia Inc. 2018</p>
       </div>
     </footer>
+
+    <!-- plotly import -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>  
 
     <!-- d3 import -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>

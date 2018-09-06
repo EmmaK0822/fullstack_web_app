@@ -50,18 +50,18 @@
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav mx-auto">
             <li class="nav-item px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="index.html">Home
+              <a class="nav-link text-uppercase text-expanded" href="/">Home
                 <span class="sr-only">(current)</span>
               </a>
             </li>
             <li class="nav-item active px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="find.html">Find</a>
+              <a class="nav-link text-uppercase text-expanded" href="/find">Find</a>
             </li>
             <li class="nav-item px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="learn.html">Learn</a>
+              <a class="nav-link text-uppercase text-expanded" href="/learn">Learn</a>
             </li>
             <li class="nav-item px-lg-4">
-              <a class="nav-link text-uppercase text-expanded" href="adopt.html">Adopt</a>
+              <a class="nav-link text-uppercase text-expanded" href="/adopt">Adopt</a>
             </li>
           </ul>
         </div>
@@ -84,12 +84,99 @@
                 <p class="mb-0">The map shows which state has pet-friendly environment, for example, a number of pet store, pet beach, vet, and pet caring services, etc. Total 9,751 businesses are spread out over the states and, if you reside in California, you are lucky! You must get the appliances for your friends easily. 
                   However, you are living in an apartment and busy with your work, it might not be a good idea to have a big energetic dog. We recommend some breeds based on your residence and lifestyle. Follow the step below and find your dog now!</p>
                 <hr>
-                <p class="mb-0"><a href="http://www.vetstreet.com/breed-finder">Click here to find your breed</a></p>
+                <!-- <p class="mb-0"><a href="http://www.vetstreet.com/breed-finder">Click here to find your breed</a></p> -->
+                  <div class="jumbotron" style="text-align: center">
+                      <h1>Breed Finder</h1>
+                      <p>Check the characteristics you would like your dog to have and we will show you dog breeds that suit your needs!</p>
+                  </div>
+                  <form method="POST" action="/send" role="form", name="petform">
+                    <div class="form-group">
+                        <label>Adapts well to apartment living</label>
+                        <select onchange="jsFunction()">
+                                <option value ="1" disabled selected style="display:none;">Select Y/N</option>
+                                <option value = "1">Y</option>
+                                <option value = "2">N</option>
+                            </select>
+                    <div class="form-group">
+                        <label>Easy to train</label>
+                        <select onchange="jsFunction()">
+                                <option value ="1" disabled selected style="display:none;">Select Y/N</option>
+                                <option value = "1">Y</option>
+                                <option value = "2">N</option>
+                            </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Mostly quiet</label>
+                        <select id="mylist" onchange="jsFunction()">
+                                <option value ="1" disabled selected style="display:none;">Select Y/N</option>
+                                <option value = "1">Y</option>
+                                <option value = "2">N</option>
+                            </select>
+                    </div>
+                    <div class="form-group">
+                        <label>High energy</label>
+                        <select id="mylist" onchange="jsFunction()">
+                                <option value ="1" disabled selected style="display:none;">Select Y/N</option>
+                                <option value = "1">Y</option>
+                                <option value = "2">N</option>
+                            </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Low energy</label>
+                        <select id="mylist" onchange="jsFunction()">
+                                <option value ="1" disabled selected style="display:none;">Select Y/N</option>
+                                <option value = "1">Y</option>
+                                <option value = "2">N</option>
+                            </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Does not shed a lot</label>
+                        <select id="mylist" onchange="jsFunction()">
+                                <option value ="1" disabled selected style="display:none;">Select Y/N</option>
+                                <option value = "1">Y</option>
+                                <option value = "2">N</option>
+                            </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Does well when left alone</label>
+                        <select id="mylist" onchange="jsFunction()">
+                                <option value ="1" disabled selected style="display:none;">Select Y/N</option>
+                                <option value = "1">Y</option>
+                                <option value = "2">N</option>
+                            </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Ideal for experienced dog owners</label>
+                        <select id="mylist" onchange="jsFunction()">
+                                <option value ="1" disabled selected style="display:none;">Select Y/N</option>
+                                <option value = "1">Y</option>
+                                <option value = "2">N</option>
+                            </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Ideal for inexperienced dog owners</label>
+                        <select id="mylist" onchange="jsFunction()">
+                                <option value ="1" disabled selected style="display:none;">Select Y/N</option>
+                                <option value = "1">Y</option>
+                                <option value = "2">N</option>
+                            </select>
+                    </div>
+                    <div class="form-group">
+                        <label>Ia intelligent</label>
+                        <select id="mylist" onchange="jsFunction()">
+                                <option value ="1" disabled selected style="display:none;">Select Y/N</option>
+                                <option value = "1">Y</option>
+                                <option value = "2">N</option>
+                            </select>
+                    <br>
+                    <input type="submit" value="Find my ideal dog breed" class="btn btn-default">
+                </form>
               </div>
             </div>
           </div>
         </div>
       </div>
+      
     </section>
 
     <footer class="footer text-faded text-center py-5">
@@ -98,15 +185,21 @@
       </div>
     </footer>
 
+    <!-- d3 import -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.5.0/d3.js"></script>
+
     <!-- Bootstrap core JavaScript -->
     <script src="../static/vendor/jquery/jquery.min.js"></script>
     <script src="../static/vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
     <!-- API key -->
     <script type="text/javascript" src="../static/js/config.js"></script>
-    <!-- JS -->
-    <script type="text/javascript" src="../static/js/logic.js"></script>
 
+    <!-- Leaflet-Choropleth JavaScript -->
+    <script type="text/javascript" src="../static/js/choropleth.js"></script>
+
+    <!-- learn_logic.js -->
+    <script src="{{ url_for('static', filename='js/find_logic.js') }}"></script> <!-- run only with Flask -->
 
   </body>
 
