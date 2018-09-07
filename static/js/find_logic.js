@@ -15,15 +15,15 @@ var StatesData
 
 d3.json("/states").then(data => {
     StatesData = L.geoJson(data).addTo(map);
-    StatesData.addData(geojsonFeature);    
+    StatesData.addData(geojsonFeature);  
+    console.log(data)  
 }) 
 
-console.log(StatesData)
 
 var geojson;
 
 // Use the pet_stores geojson data
-d3.json(StatesData, function(data) {
+d3.json('/states', function(data) {
     console.log(data);
 
     // Create a new choropleth layer
@@ -54,4 +54,40 @@ d3.json(StatesData, function(data) {
     }).addTo(myMap);
 
 });
+
+// Survey variable
+document.addEventListener('DOMContentLoaded', bindButtons);
+
+function bindButtons(){
+    document.getElementById('submitbreed').addEventListener('click', function(event){
+        console.log("####")
+        event.preventDefault();
+        var apt = document.getElementById("apt").value;
+        var train = document.getElementById("train").value;
+        var quiet = document.getElementById("quiet").value;
+        var highEnergy = document.getElementById("high").value;
+        var lowEnergy = document.getElementById("low").value;
+        var shed = document.getElementById("shed").value;
+        var alone = document.getElementById("alone").value;
+        var experienced = document.getElementById("experienced").value;
+        var inexperienced = document.getElementById("inexperienced").value;
+
+        var dict = []; // create an empty array
+                
+        dict.push({
+            apt_ans: apt,
+            train_ans: train,
+            quiet_ans: quiet,
+            highEnergy_ans: highEnergy,
+            lowEnergy_ans: lowEnergy,
+            shed_ans: shed,
+            alone_ans: alone,
+            exp_ans: experienced,
+            inexp_ans: inexperienced
+        })
+                    
+        console.log(dict)
+    })
+} 
+
 

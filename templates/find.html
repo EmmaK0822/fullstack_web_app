@@ -89,88 +89,48 @@
                       <h1>Breed Finder</h1>
                       <p>Check the characteristics you would like your dog to have and we will show you dog breeds that suit your needs!</p>
                   </div>
-                  <form method="POST" action="/send" role="form", name="petform">
+                  <form>
                     <div class="form-group">
                         <label>Adapts well to apartment living</label>
-                        <select onchange="jsFunction()">
-                                <option value ="1" disabled selected style="display:none;">Select Y/N</option>
-                                <option value = "1">Y</option>
-                                <option value = "2">N</option>
-                            </select>
+                        <input type="text" class="form-control" id="apt" placeholder="Y/N">
                     </div>
                     <div class="form-group">
                         <label>Easy to train</label>
-                        <select onchange="jsFunction()">
-                                <option value ="1" disabled selected style="display:none;">Select Y/N</option>
-                                <option value = "1">Y</option>
-                                <option value = "2">N</option>
-                            </select>
+                        <input type="text" class="form-control" id="train" placeholder="Y/N">
                     </div>
                     <div class="form-group">
                         <label>Mostly quiet</label>
-                        <select id="mylist" onchange="jsFunction()">
-                                <option value ="1" disabled selected style="display:none;">Select Y/N</option>
-                                <option value = "1">Y</option>
-                                <option value = "2">N</option>
-                            </select>
+                        <input type="text" class="form-control" id="quiet" placeholder="Y/N">
                     </div>
                     <div class="form-group">
                         <label>High energy</label>
-                        <select id="mylist" onchange="jsFunction()">
-                                <option value ="1" disabled selected style="display:none;">Select Y/N</option>
-                                <option value = "1">Y</option>
-                                <option value = "2">N</option>
-                            </select>
+                        <input type="text" class="form-control" id="high" placeholder="Y/N">
                     </div>
                     <div class="form-group">
                         <label>Low energy</label>
-                        <select id="mylist" onchange="jsFunction()">
-                                <option value ="1" disabled selected style="display:none;">Select Y/N</option>
-                                <option value = "1">Y</option>
-                                <option value = "2">N</option>
-                            </select>
+                        <input type="text" class="form-control" id="low" placeholder="Y/N">
                     </div>
                     <div class="form-group">
                         <label>Does not shed a lot</label>
-                        <select id="mylist" onchange="jsFunction()">
-                                <option value ="1" disabled selected style="display:none;">Select Y/N</option>
-                                <option value = "1">Y</option>
-                                <option value = "2">N</option>
-                            </select>
+                        <input type="text" class="form-control" id="shed" placeholder="Y/N">
                     </div>
                     <div class="form-group">
                         <label>Does well when left alone</label>
-                        <select id="mylist" onchange="jsFunction()">
-                                <option value ="1" disabled selected style="display:none;">Select Y/N</option>
-                                <option value = "1">Y</option>
-                                <option value = "2">N</option>
-                            </select>
+                        <input type="text" class="form-control" id="alone" placeholder="Y/N">
                     </div>
                     <div class="form-group">
                         <label>Ideal for experienced dog owners</label>
-                        <select id="mylist" onchange="jsFunction()">
-                                <option value ="1" disabled selected style="display:none;">Select Y/N</option>
-                                <option value = "1">Y</option>
-                                <option value = "2">N</option>
-                            </select>
+                        <input type="text" class="form-control" id="experienced" placeholder="Y/N">
                     </div>
                     <div class="form-group">
                         <label>Ideal for inexperienced dog owners</label>
-                        <select id="mylist" onchange="jsFunction()">
-                                <option value ="1" disabled selected style="display:none;">Select Y/N</option>
-                                <option value = "1">Y</option>
-                                <option value = "2">N</option>
-                            </select>
+                        <input type="text" class="form-control" id="inexperienced" placeholder="Y/N">
                     </div>
                     <div class="form-group">
-                        <label>Ia intelligent</label>
-                        <select id="mylist" onchange="jsFunction()">
-                                <option value ="1" disabled selected style="display:none;">Select Y/N</option>
-                                <option value = "1">Y</option>
-                                <option value = "2">N</option>
-                            </select>
+                        <label>Is intelligent</label>
+                        <input type="text" class="form-control" id="intelligent" placeholder="Y/N">
                     </div>
-                    <input type="submit" value="Find my ideal dog breed" class="btn btn-primary btn-xl" style="margin-top: 5px">
+                    <button type="submit" class="btn btn-primary btn-xl" id="submitbreed">Find my ideal dog breed</button>
                 </form>
               </div>
             </div>
