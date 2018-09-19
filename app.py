@@ -4,7 +4,7 @@ from config import dbuser, dbpassword
 import pandas as pd
 import numpy as np
 
-from flask import Flask, jsonify, render_template
+from flask import Flask, jsonify, render_template, request, redirect
 from flask_pymongo import PyMongo
 import pymongo
 
@@ -61,6 +61,26 @@ def states():
     return jsonify(states)
 
 
+@app.route("/send", methods=["GET", "POST"])
+def insert():
+    if request.method == "POST":
+        breed = request.form["Breed"]
+        time = request.form["Time"]
+        money = request.form["Money"]
+        
+        print(breed)
+        print(time)
+        print(money)
+
+        db.time_money.insert_one({'breed': breed,
+                                    'time': time,
+                                    'money': money})
+
+        return redirect("/learn", code=302)
+
+    return render_template("learn.html")
+
+
 @app.route("/breed_traits/<breed>")
 def breedTraits(breed):
     """Return the traits for a given breed"""
@@ -99,6 +119,42 @@ def inputValues(breed):
 
     return jsonify(value)
 
+@app.route("/find_breed")
+def findBreed():
+    """Return breeds with traits matching input values"""
+    # convert input strings to corresponding integer values
+    apt = int(request.args["apt"])
+    energy = int(request.args["energy"])
+    shed = int(request.args["shed"])
+
+    print(apt)
+    print(energy)
+    print(shed)
+
+    # filter breed_traits collection by input values
+    datas = list(db.breed_trait.find({'apt_friendly': apt,
+                                        'energy': energy,
+                                        'shedding': shed}))
+
+    breeds = []
+    apts = []
+    energys = []
+    sheddings = []
+    
+    for data in datas:
+        breeds.append(data['breed'])
+        apts.append(data['apt_friendly'])
+        energys.append(data['energy'])
+        sheddings.append(data['shedding'])
+    
+    value = {
+        "breed": breeds,
+        "apt_friendly": apts,
+        "energy":energys,
+        "shedding": sheddings
+    }
+
+    return jsonify(value)
 
 
 if __name__ == "__main__":

@@ -73,18 +73,18 @@
                 <form method="POST" action="/send" role="form">
                     <div class="form-group">
                       <label for="selBreed">Select your breed</label>
-                      <select id="selDataset" onchange="optionChanged(this.value)"></select>
+                      <select id="selDataset" onchange="optionChanged(this.value)" name="Breed"></select>
                     </div>
-                    <div class="form-group">
+                    <div class="form-groupß">
                       <label for="inputTime">How many hours do you spend with your dogs per day? (optional)</label>
-                      <input type="number" class="form-control" id="inputTime" placeholder="Answer with a number of hours">
+                      <input type="number" class="form-control" id="inputTime" name= "Time" placeholder="Answer with a number of hours">
                     </div>
                     <div class="form-group">
                       <label for="inputTime">How much do you spend on your dogs per month? (optional)</label>
-                      <input type="number" class="form-control" id="inputMoney" placeholder="Answer with a dollar value">
+                      <input type="number" class="form-control" id="inputMoney" name= "Money" placeholder="Answer with a dollar value">
                     </div>
                     <!-- <input type="submit" value="submit" class="btn btn-primary btn-xl"> -->
-                    <button type="submit" class="btn btn-primary btn-xl" id="search">Search</button>
+                    <button type="submit" class="btn btn-primary btn-xl" id="search">Submit</button>
                   </form>
 
             </div>
