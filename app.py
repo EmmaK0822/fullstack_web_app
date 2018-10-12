@@ -8,7 +8,7 @@ from flask import Flask, jsonify, render_template, request, redirect
 from flask_pymongo import PyMongo
 import pymongo
 
-app = Flask(__name__)
+application = Flask(__name__)
 
 # 1. Database setup
 
@@ -24,22 +24,22 @@ db = client.dogpedia
 
 # 2. Setting up the basic template route
 
-@app.route("/")
+@application.route("/")
 def index():
     """Return index page"""
     return render_template('index.html')
 
-@app.route("/find")
+@application.route("/find")
 def find():
     """Return find page"""
     return render_template('find.html')
 
-@app.route("/learn")
+@application.route("/learn")
 def learn():
     """Return learn page"""
     return render_template('learn.html')
 
-@app.route("/adopt")
+@application.route("/adopt")
 def adopt():
     """Return adopt page"""
     return render_template('adopt.html')
@@ -47,21 +47,21 @@ def adopt():
 
 # 3. Getting extra info with additional route
 
-@app.route("/breeds")
+@application.route("/breeds")
 def breeds():
     # breeds = mongo.db.breeds.find_one()['breed']
     breeds = db.breeds.find_one()['breed']
     return jsonify(breeds)
 
 
-@app.route("/states")
+@application.route("/states")
 def states():
     # states = mongo.db.pet_stores.find_one()["geo"]
     states = db.pet_stores.find_one()["geo"]
     return jsonify(states)
 
 
-@app.route("/send", methods=["GET", "POST"])
+@application.route("/send", methods=["GET", "POST"])
 def insert():
     if request.method == "POST":
         breed = request.form["Breed"]
@@ -81,7 +81,7 @@ def insert():
     return render_template("learn.html")
 
 
-@app.route("/breed_traits/<breed>")
+@application.route("/breed_traits/<breed>")
 def breedTraits(breed):
     """Return the traits for a given breed"""
     name = breed
@@ -99,7 +99,7 @@ def breedTraits(breed):
     return jsonify(breed_traits)
 
 
-@app.route("/time_money/<breed>")
+@application.route("/time_money/<breed>")
 def inputValues(breed):
     """Return a list of time and money spent on the breed"""
     datas = list(db.time_money.find({'breed': breed}))
@@ -119,7 +119,7 @@ def inputValues(breed):
 
     return jsonify(value)
 
-@app.route("/find_breed")
+@application.route("/find_breed")
 def findBreed():
     """Return breeds with traits matching input values"""
     # convert input strings to corresponding integer values
@@ -158,4 +158,4 @@ def findBreed():
 
 
 if __name__ == "__main__":
-    app.run(debug=True, port=4996)
+    application.run(debug=True, port=4996)
