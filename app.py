@@ -17,7 +17,7 @@ application = Flask(__name__)
 # mongo = PyMongo(app)
 
 ### Option 2. Use pymongo and connect to database
-conn = f"mongodb://{dbuser}:{dbpassword}@ds018558.mlab.com:18558/dogpedia"
+conn = "mongodb://{}:{}@ds018558.mlab.com:18558/dogpedia".format(dbuser,dbpassword)
 client = pymongo.MongoClient(conn)
 db = client.dogpedia
 
